@@ -12,6 +12,7 @@
         <p class="card-text mb-0" v-if="remainingTime == 0">Then $39.99/week</p>
       </div>
       <div class="progress" ref="timer" v-if="remainingTime > 0">
+        <p class="trial-box__timer-time">{{ remainingTimeToShow }}</p>
         <div
           class="progress-bar"
           ref="elapsedTime"
@@ -19,12 +20,10 @@
           aria-valuenow="seconds"
           aria-valuemin="0"
           aria-valuemax="180"
-        >
-          {{ remainingTimeToShow }}
-        </div>
+        ></div>
       </div>
     </div>
-    <ul class="list-group list-group-flush list-unstyled">
+    <ul class="list-group list-group-flush list-unstyled benefits-list">
       <li class="list-group-item">
         <span class="list-group-item__text"
           >Exclusive access to <span class="orange">350+</span> learning
@@ -113,29 +112,23 @@ export default {
 </script>
 
 <style scoped>
-.trial-box {
-  box-sizing: border-box;
-  background: #ffffff;
-  border: 1px solid #cdcdcd;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06);
-  border-radius: 24px;
-  padding: 24px;
-  width: 475.6px;
-}
-.trial-box:before {
-  content: url("../assets/Asteroid.svg");
-  width: 202.13px;
-  height: 80px;
-  position: absolute;
-  right: 4.05%;
-  top: -56px;
-  z-index: 10;
-}
 .trial-box__title-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 426px;
+}
+.list-group-item__text {
+  font-weight: 400;
+}
+.trial-box__timer-time {
+  color: #ffffff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 34px;
 }
 li::before {
   content: url("../assets/Dot.png");
@@ -174,6 +167,7 @@ li::before {
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 12px;
   margin: 0 auto 24px;
+  background: white;
 }
 
 .trial-box__secure-info::before {
@@ -195,9 +189,8 @@ li::before {
 .trial-box__body {
   display: block;
   padding: 0;
-  margin-bottom: 24px;
-  flex-basis: 0;
 }
+
 .list-group-item__text {
   display: inline-block;
   vertical-align: middle;
@@ -209,8 +202,7 @@ li::before {
   vertical-align: middle;
 }
 .progress {
-  width: 160px;
-  height: 60px;
+  position: relative;
   background: #000000;
   border-radius: 12px;
 }
@@ -219,5 +211,67 @@ li::before {
 }
 .progress-bar__critical-time {
   filter: drop-shadow(0px 0px 6px rgba(255, 0, 0, 0.8));
+}
+@media (min-width: 360px) and (max-width: 1439px) {
+  .benefits-list,
+  .trial-box__secure-info,
+  .trial-box__info-text,
+  .trial-box__secure-info,
+  .trial-box__info-text {
+    position: absolute;
+    width: 320px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .benefits-list {
+    top: 380px;
+  }
+  .list-group-item__text {
+    font-size: 16px;
+    line-height: 19.2px;
+    width: 286px;
+  }
+  .trial-box__secure-info {
+    top: 614px;
+  }
+  .trial-box__info-text {
+    top: 700px;
+  }
+  .col-3 {
+    width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 12px 16px;
+  }
+  .card-title {
+    font-size: 18px;
+    line-height: 21.6px;
+  }
+  .progress {
+    width: 110px;
+    height: 47px;
+    margin-left: 12px;
+  }
+  .card-body {
+    flex: 0 0 auto;
+  }
+  .trial-box {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+@media screen and (min-width: 1440px) {
+  .trial-box__title-wrapper {
+    margin-bottom: 24px;
+  }
+  .progress {
+    width: 160px;
+    height: 60px;
+  }
+  .trial-box__body {
+    flex-basis: 0;
+  }
 }
 </style>

@@ -16,13 +16,22 @@ export default {
 
 <style scoped>
 .header {
-  width: 1440px;
-  height: 56px;
-  padding: 8px 135px;
-  margin-bottom: 65px;
+  width: 100%;
 }
 .header__img-logo {
   width: 179px;
   height: 40px;
+}
+@media screen and (min-width: 360px) {
+  .header {
+    padding: 8px 20px;
+    margin-bottom: 32px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .header {
+    padding: 8px 135px;
+    margin-bottom: 65px;
+  }
 }
 </style>
